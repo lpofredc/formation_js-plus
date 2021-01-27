@@ -7,3 +7,28 @@ h1 {
 .tweet {
   margin: 1rem;
 }
+
+.tweetauthor {
+  font-weight: bold;
+  color: blue;
+}
+
+.tweetdate {
+  color: red;
+}
+
+.tweettext {
+  color: grey;
+}
+
+.tweethastags {
+  color: green;
+}
+
+li {
+  margin: 1rem 0;
+}
+
+li span {
+  margin-right: 1rem;
+}
