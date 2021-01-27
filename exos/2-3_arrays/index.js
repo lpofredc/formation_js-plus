@@ -57,22 +57,24 @@ document.addEventListener(
 
         console.log('--- Question 7 ---');
         // lister tous les textes de hashtags du premier tweet
-        const a_hashtags = tweets[0].entities.hashtags.map(e => {
-          return e.text
-        })
+        const a_hashtags = tweets[0].entities.hashtags.map(e => e.text)
         console.log('first hashtags', a_hashtags)
 
 
         console.log('--- BONUS ---');
         // lister les 56 tweets qui ont pour hashtag `coronadiary`
 
-        const coronadiary = tweets.filter((e, i, a) => {
-          // return e.entities.hashtags.includes('coronadiary')
+        const coronadiary = tweets.filter(e => {
           return e.entities.hashtags.find(e => {
             return e.text === 'coronadiary'
           })
         })
+
+        const coronadiarySimp = tweets.filter(e => e.entities.hashtags.find(e => {
+          return e.text === 'coronadiary'
+        }))
         console.log(coronadiary)
+        console.log(coronadiarySimp)
       })
       .catch(function (e) {
         console.error(e);
