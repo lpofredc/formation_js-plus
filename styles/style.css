@@ -25,6 +25,22 @@ h1 {
   color: green;
 }
 
+.tweetOl {
+
+}
+
+.tweetLi {
+  color: grey;
+}
+
+btn{
+  background-color: grey;
+  border: 1px solid greenyellow;
+  float : right;
+  font-size: 2rem;
+  padding: 0.5rem
+}
+
 li {
   margin: 1rem 0;
 }
