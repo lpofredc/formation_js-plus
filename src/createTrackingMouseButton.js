@@ -1,21 +1,21 @@
-"use strict";
+'use strict';
 
-import { createBtn } from "./utils.js";
+import { createBtn } from './utils.js';
 
 const trackingMousePosition = (e) => {
   console.log(`MousePosition ${e.clientX} | ${e.clientY}`);
 };
 
 export default () => {
-  const btn = createBtn("MousePosition", "mousePosition");
+  const btn = createBtn('MousePosition', 'mousePosition');
   let state = false;
-  btn.addEventListener("click", () => {
+  btn.addEventListener('click', () => {
     state = !state;
     console.debug(`set MousePositionTracker to ${state}`);
     if (state) {
-      document.addEventListener("mousemove", trackingMousePosition);
+      document.addEventListener('mousemove', trackingMousePosition);
     } else {
-      document.removeEventListener("mousemove", trackingMousePosition);
+      document.removeEventListener('mousemove', trackingMousePosition);
     }
   });
   return btn;

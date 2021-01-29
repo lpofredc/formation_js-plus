@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-import { createBtn } from "./utils.js";
-import divTweets from "./createTweetsOl.js";
+import { createBtn } from './utils.js';
+import divTweets from './createTweetsOl.js';
 
 /**
  * Create a filter button that filter on french language
@@ -9,12 +9,12 @@ import divTweets from "./createTweetsOl.js";
  * @param {Element} ol
  */
 export default (tweets, ol) => {
-  const btn = createBtn("Only FR", "filterBtn");
+  const btn = createBtn('Only FR', 'filterBtn');
   let state = false;
-  btn.addEventListener("click", () => {
+  btn.addEventListener('click', () => {
     state = !state;
     const listTweets = state
-      ? tweets.filter((tweet) => tweet.lang === "fr")
+      ? tweets.filter((tweet) => tweet.lang === 'fr')
       : tweets;
     const newOl = divTweets(listTweets);
     ol.replaceWith(newOl);

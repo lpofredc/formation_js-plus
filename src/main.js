@@ -1,18 +1,16 @@
-"use strict";
+'use strict';
 
-import ps from "./urls.js";
-import divTweets from "./createTweetsOl.js";
-import filterFrBtn from "./createFilterButton.js";
-import trackingBtn from "./createTrackingMouseButton.js";
-
-console.log(ps);
+import ps from './urls.js';
+import divTweets from './createTweetsOl.js';
+import filterFrBtn from './createFilterButton.js';
+import trackingBtn from './createTrackingMouseButton.js';
 
 document.addEventListener(
-  "DOMContentLoaded",
+  'DOMContentLoaded',
   function () {
     Promise.all(ps).then((tab) => {
       const tweets = tab.flat();
-      const root = document.getElementById("root");
+      const root = document.getElementById('root');
       const ol = divTweets(tweets);
       const filterBtn = filterFrBtn(tweets, ol);
       const trackBtn = trackingBtn();
