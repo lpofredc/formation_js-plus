@@ -1,0 +1,20 @@
+{
+  "name": "formation_js-plus",
+  "version": "1.0.0",
+  "description": "## 0. [Un peu d'histoire](./contenus/chapters/0_history/index.md)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lpofredc/formation_js-plus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lpofredc/formation_js-plus/issues"
+  },
+  "homepage": "https://github.com/lpofredc/formation_js-plus#readme"
+}
