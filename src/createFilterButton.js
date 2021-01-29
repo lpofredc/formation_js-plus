@@ -1,6 +1,6 @@
 'use strict';
 
-import { createBtn } from './utils.js';
+import { createBtn, isTweetFr } from './utils.js';
 import divTweets from './createTweetsOl.js';
 
 /**
@@ -13,9 +13,7 @@ export default (tweets, ol) => {
   let state = false;
   btn.addEventListener('click', () => {
     state = !state;
-    const listTweets = state
-      ? tweets.filter((tweet) => tweet.lang === 'fr')
-      : tweets;
+    const listTweets = state ? tweets.filter(isTweetFr) : tweets;
     const newOl = divTweets(listTweets);
     ol.replaceWith(newOl);
     ol = newOl;

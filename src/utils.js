@@ -6,3 +6,5 @@ export const createBtn = (label, style) => {
   btn.classList.add(style);
   return btn;
 };
+
+export const isTweetFr = (tweet) => !!tweet.lang?.startsWith('fr');
