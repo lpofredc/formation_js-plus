@@ -1,4 +1,5 @@
 "use strict";
+import createLi from "./createTweetLi.js";
 
 const createOl = (tweets) => {
   const ol = document.createElement("ol");
@@ -8,7 +9,7 @@ const createOl = (tweets) => {
   return ol;
 };
 
-const divTweets = (tweets) => {
+export default (tweets) => {
   const myTweets = document.createElement("div");
   myTweets.append(createOl(tweets));
   return myTweets;

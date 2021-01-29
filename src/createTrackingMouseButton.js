@@ -1,10 +1,12 @@
 "use strict";
 
+import { createBtn } from "./utils.js";
+
 const trackingMousePosition = (e) => {
   console.log(`MousePosition ${e.clientX} | ${e.clientY}`);
 };
 
-const trackingBtn = () => {
+export default () => {
   const btn = createBtn("MousePosition", "mousePosition");
   let state = false;
   btn.addEventListener("click", () => {

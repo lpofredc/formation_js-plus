@@ -1,8 +1,11 @@
 "use strict";
 
-// Utils
+import ps from "./urls.js";
+import divTweets from "./createTweetsOl.js";
+import filterFrBtn from "./createFilterButton.js";
+import trackingBtn from "./createTrackingMouseButton.js";
 
-const ps = [url1, url2].map(getJson);
+console.log(ps);
 
 document.addEventListener(
   "DOMContentLoaded",

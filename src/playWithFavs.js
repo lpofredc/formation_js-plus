@@ -2,7 +2,7 @@
 
 localStorage.setItem("myFavs", "");
 
-const addFavs = (id) => {
+export default (id) => {
   if (id != null) {
     console.log(id);
     const myFavs = localStorage.getItem("myFavs");
