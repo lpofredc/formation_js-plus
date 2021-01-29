@@ -8,3 +8,5 @@ export const createBtn = (label, style) => {
 };
 
 export const isTweetFr = (tweet) => !!tweet.lang?.startsWith('fr');
+
+console.log('test');

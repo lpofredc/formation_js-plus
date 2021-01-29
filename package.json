@@ -13,6 +13,14 @@
     "watch": "watchify src/main.js -o 'dist/bundle.js' -t [ babelify ] -d -v",
     "lint": "eslint ./src"
   },
+  "lint-staged": {
+    "*.js": ["eslint", "jest --findRelatedTests"]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lpofredc/formation_js-plus.git"
