@@ -2,138 +2,22 @@
 
 // Utils
 
-const getJson = (url) => {
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .catch((err) => {
-      console.warn(err);
-    });
-};
-
-localStorage.setItem("myFavs", "");
-
-const addFavs = (id) => {
-  if (id != null) {
-    console.log(id);
-    const myFavs = localStorage.getItem("myFavs");
-    const myFavsArray = new Set(myFavs.split(","));
-    myFavsArray.add(id);
-    localStorage.setItem("myFavs", [...myFavsArray].join(","));
-  }
-};
-
-// Create content
-
-const createLi = (tweet) => {
-  const li = document.createElement("li");
-  li.classList.add("tweetLi");
-  li.textContent = `[${tweet.lang}] ${tweet.full_text}`;
-  li.dataset.id = tweet.id;
-  li.addEventListener("click", () => {
-    addFavs(tweet.id);
-  });
-  return li;
-};
-
-const createOl = (tweets) => {
-  const ol = document.createElement("ol");
-  ol.classList.add("tweetOl");
-  const liTweets = tweets.map(createLi);
-  ol.append(...liTweets);
-  return ol;
-};
-
-const tweetsByLang = (tweets, lang) => {
-  return tweets.filter((e) => {
-    if (lang != null) {
-      return e.lang === lang;
-    } else {
-      return true;
-    }
-  });
-};
-
-const divTweets = (tweets) => {
-  const myTweets = document.createElement("div");
-  myTweets.setAttribute("id", "mytweets");
-  myTweets.append(createOl(tweets));
-  return myTweets;
-};
-
-const createBtn = (label, style) => {
-  const btn = document.createElement("btn");
-  btn.textContent = label;
-  btn.classList.add(style);
-  return btn;
-};
-
-const trackingMousePosition = (e) => {
-  console.log(`MousePosition ${e.clientX} | ${e.clientY}`);
-};
-
-const filterFrBtn = (tweets) => {
-  const btn = createBtn("Only FR", "filterBtn");
-  let state = false;
-  let listTweets = tweets;
-  btn.addEventListener("click", () => {
-    if (state) {
-      listTweets = tweetsByLang(tweets, "fr");
-    } else {
-      listTweets = tweets;
-    }
-    state = !state;
-    const el = document.getElementById("mytweets");
-    el.parentNode.replaceChild(
-      divTweets(listTweets),
-      document.getElementById("mytweets"),
-    );
-    // el.append(divTweets(listTweets))
-  });
-  return btn;
-};
-
-const trackingBtn = () => {
-  const btn = createBtn("MousePosition", "mousePosition");
-  let state = false;
-  btn.addEventListener("click", () => {
-    state = !state;
-    console.log(`set MousePositionTracker to ${state}`);
-    if (state) {
-      document.addEventListener("mousemove", trackingMousePosition);
-    } else {
-      document.removeEventListener("mousemove", trackingMousePosition);
-    }
-  });
-  return btn;
-};
-
-const btnBlock = (tweets) => {
-  const block = document.createElement("div");
-  block.classList.add("btnBlock");
-  block.append(filterFrBtn(tweets), trackingBtn());
-  return block;
-};
+const ps = [url1, url2].map(getJson);
 
 document.addEventListener(
   "DOMContentLoaded",
   function () {
-    const firstTweets = getJson(
-      "https://raw.githubusercontent.com/iOiurson/data/master/data/tweets.json",
-    ).catch((err) => console.error(err));
-
-    const secondTweets = getJson(
-      "https://raw.githubusercontent.com/iOiurson/formation/correction/data/tweets2.json",
-    ).catch((err) => console.error(err));
-
-    Promise.all([firstTweets, secondTweets]).then((tab) => {
+    Promise.all(ps).then((tab) => {
       const tweets = tab.flat();
       const root = document.getElementById("root");
-      root.append(btnBlock(tweets));
-      root.append(divTweets(tweets));
+      const ol = divTweets(tweets);
+      const filterBtn = filterFrBtn(tweets, ol);
+      const trackBtn = trackingBtn();
+      root.append(filterBtn);
+      root.append(trackBtn);
+      root.append(ol);
     });
-    
+
     // const myTweets = document.createElement('div')
 
     // créer un <ol> et remplacer la <div> par le <ol>
@@ -179,5 +63,5 @@ et l'utiliser à [2], [3], [4] */
 
     // [3] au chargement de la page, lire le localStorage pour favoriser les favoris.
   },
-  { once: true },
+  { once: true }
 );
