@@ -14,7 +14,11 @@
     "lint": "eslint ./src"
   },
   "lint-staged": {
-    "*.js": ["eslint", "jest --findRelatedTests"]
+    "*.js": [
+      "prettier --write",
+      "eslint",
+      "jest --findRelatedTests"
+    ]
   },
   "husky": {
     "hooks": {
