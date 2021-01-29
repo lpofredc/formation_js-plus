@@ -11,4 +11,4 @@ export const isTweetFr = (tweet) => !!tweet.lang?.startsWith('fr');
 
 console.log('test');
 
-console.log('test2');
+console.log('test');
